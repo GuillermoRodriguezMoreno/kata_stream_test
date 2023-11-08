@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Exercise1Test extends PetDomainForKata
 {
@@ -19,6 +20,10 @@ public class Exercise1Test extends PetDomainForKata
         //TODO
         // Replace empty list firstNames with a stream transformation on people.
         List<String> firstNames = new ArrayList<>(); // this.people...
+
+        firstNames = this.people.stream()
+                .map(Person::getFirstName)
+                .collect(Collectors.toList());
 
         var expectedFirstNames = Arrays.asList("Mary", "Bob", "Ted", "Jake", "Barry", "Terry", "Harry", "John");
         Assertions.assertIterableEquals(expectedFirstNames, firstNames);
@@ -36,6 +41,10 @@ public class Exercise1Test extends PetDomainForKata
             //TODO
             // Replace empty list name with a stream transformation on pets.
             names = new ArrayList<>() ;
+
+            names = this.people.stream()
+                    .filter(person -> person.getFullName().equals("Mary Smiths"))
+                    .map();
 
         }
 
